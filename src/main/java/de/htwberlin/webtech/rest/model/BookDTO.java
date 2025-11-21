@@ -1,5 +1,5 @@
 package de.htwberlin.webtech.rest.model;
 
-public record BookDTO (String title, String autor, int releaseYear) {
+public record BookDTO (int id,String title, String author, int releaseYear) {
 
 }

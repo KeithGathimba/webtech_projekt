@@ -11,8 +11,8 @@ import java.util.List;
 public class BookService {
 
     public List<BookDTO> getBookEntries() {
-        return List.of(new BookDTO("Legend of Dragons", "Shakespeare", 2000),
-                new BookDTO("Haus am Hafen", "Tyson Gay", 2022),
-                new BookDTO("Tom und Jerry", "Tom Brady", 2012));
+        return List.of(new BookDTO(1, "Legend of Dragons", "Shakespeare", 2000),
+                new BookDTO(2, "Haus am Hafen", "Tyson Gay", 2022),
+                new BookDTO(3, "Tom und Jerry", "Tom Brady", 2012));
     }
 }
