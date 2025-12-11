@@ -1,12 +1,10 @@
 package de.htwberlin.webtech.rest.controller;
 
+import de.htwberlin.webtech.persistence.BookEntity;
 import de.htwberlin.webtech.rest.model.BookDTO;
 import de.htwberlin.webtech.service.BookService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +22,11 @@ public class BookController {
     @GetMapping("/books")
     public ResponseEntity<List<BookDTO>> getAllBooks() {
         return ResponseEntity.ok(bookService.getBookEntries());
+    }
+
+    @PostMapping("/books")
+    public ResponseEntity<BookEntity> createBook(@RequestBody BookDTO bookDTO) {
+        BookEntity createdBook = bookService.createBook(bookDTO);
+        return ResponseEntity.ok(createdBook);
     }
 }
