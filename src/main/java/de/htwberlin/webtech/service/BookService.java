@@ -41,4 +41,14 @@ public class BookService {
                 bookEntity.getReleaseYear()
         );
     }
+    public BookEntity updateBook(Long id, BookDTO bookDTO) {
+        BookEntity bookEntity = bookRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Buch nicht gefunden"));
+
+        bookEntity.setTitle(bookDTO.title());
+        bookEntity.setAuthor(bookDTO.author());
+        bookEntity.setReleaseYear(bookDTO.releaseYear());
+
+        return bookRepository.save(bookEntity);
+    }
 }
