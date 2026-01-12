@@ -2,7 +2,7 @@ package de.htwberlin.webtech.persistence;
 
 import jakarta.persistence.*;
 
-@Entity // Markiert die Klasse als DB-Tabelle
+@Entity
 @Table(name = "books")
 public class BookEntity {
 
@@ -20,17 +20,18 @@ public class BookEntity {
     @Column(name = "release_year")
     private int releaseYear;
 
-    // Leerer Konstruktor (Pflicht für JPA)
+    @Column(name = "status")
+    private String status;
+
     public BookEntity() {}
 
-    // Konstruktor zum Erstellen
-    public BookEntity(String title, String author, int releaseYear) {
+    public BookEntity(String title, String author, int releaseYear, String status) {
         this.title = title;
         this.author = author;
         this.releaseYear = releaseYear;
+        this.status = status;
     }
 
-    // Getter und Setter
     public Long getId() { return id; }
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
@@ -38,4 +39,7 @@ public class BookEntity {
     public void setAuthor(String author) { this.author = author; }
     public int getReleaseYear() { return releaseYear; }
     public void setReleaseYear(int releaseYear) { this.releaseYear = releaseYear; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }

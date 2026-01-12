@@ -18,8 +18,7 @@ public class BookService {
     }
 
     public List<BookDTO> getBookEntries() {
-        List<BookEntity> books = bookRepository.findAll();
-        return books.stream()
+        return bookRepository.findAll().stream()
                 .map(this::transformEntity)
                 .collect(Collectors.toList());
     }
@@ -28,7 +27,8 @@ public class BookService {
         BookEntity bookEntity = new BookEntity(
                 bookDTO.title(),
                 bookDTO.author(),
-                bookDTO.releaseYear()
+                bookDTO.releaseYear(),
+                bookDTO.status()
         );
         return bookRepository.save(bookEntity);
     }
@@ -40,7 +40,7 @@ public class BookService {
         bookEntity.setTitle(bookDTO.title());
         bookEntity.setAuthor(bookDTO.author());
         bookEntity.setReleaseYear(bookDTO.releaseYear());
-
+        bookEntity.setStatus(bookDTO.status());
         return bookRepository.save(bookEntity);
     }
 
@@ -54,10 +54,11 @@ public class BookService {
 
     private BookDTO transformEntity(BookEntity bookEntity) {
         return new BookDTO(
-                bookEntity.getId().intValue(),
+                bookEntity.getId(),
                 bookEntity.getTitle(),
                 bookEntity.getAuthor(),
-                bookEntity.getReleaseYear()
+                bookEntity.getReleaseYear(),
+                bookEntity.getStatus()
         );
     }
 }
