@@ -37,15 +37,25 @@ public class BookEntity {
     }
 
     public Long getId() { return id; }
+
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
+
     public String getAuthor() { return author; }
     public void setAuthor(String author) { this.author = author; }
+
     public int getReleaseYear() { return releaseYear; }
     public void setReleaseYear(int releaseYear) { this.releaseYear = releaseYear; }
+
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 
-    public Integer getRating() { return rating; }
+    public int getRating() {
+        if (this.rating == null) {
+            return 0;
+        }
+        return this.rating;
+    }
+
     public void setRating(Integer rating) { this.rating = rating; }
 }
