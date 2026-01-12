@@ -23,13 +23,17 @@ public class BookEntity {
     @Column(name = "status")
     private String status;
 
+    @Column(name = "rating")
+    private int rating;
+
     public BookEntity() {}
 
-    public BookEntity(String title, String author, int releaseYear, String status) {
+    public BookEntity(String title, String author, int releaseYear, String status, int rating) {
         this.title = title;
         this.author = author;
         this.releaseYear = releaseYear;
         this.status = status;
+        this.rating = rating;
     }
 
     public Long getId() { return id; }
@@ -39,7 +43,9 @@ public class BookEntity {
     public void setAuthor(String author) { this.author = author; }
     public int getReleaseYear() { return releaseYear; }
     public void setReleaseYear(int releaseYear) { this.releaseYear = releaseYear; }
-
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+
+    public int getRating() { return rating; }
+    public void setRating(int rating) { this.rating = rating; }
 }

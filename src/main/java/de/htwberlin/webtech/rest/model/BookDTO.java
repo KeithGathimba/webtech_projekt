@@ -5,5 +5,6 @@ public record BookDTO(
         String title,
         String author,
         int releaseYear,
-        String status // <--- NEU
+        String status,
+        int rating // <--- NEU
 ) { }
