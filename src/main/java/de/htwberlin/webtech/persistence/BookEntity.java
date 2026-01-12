@@ -24,11 +24,11 @@ public class BookEntity {
     private String status;
 
     @Column(name = "rating")
-    private int rating;
+    private Integer rating;
 
     public BookEntity() {}
 
-    public BookEntity(String title, String author, int releaseYear, String status, int rating) {
+    public BookEntity(String title, String author, int releaseYear, String status, Integer rating) {
         this.title = title;
         this.author = author;
         this.releaseYear = releaseYear;
@@ -46,6 +46,6 @@ public class BookEntity {
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 
-    public int getRating() { return rating; }
-    public void setRating(int rating) { this.rating = rating; }
+    public Integer getRating() { return rating; }
+    public void setRating(Integer rating) { this.rating = rating; }
 }
