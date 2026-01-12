@@ -29,8 +29,19 @@ public class BookController {
         BookEntity createdBook = bookService.createBook(bookDTO);
         return ResponseEntity.ok(createdBook);
     }
+
     @PutMapping("/books/{id}")
     public ResponseEntity<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookDTO bookDTO) {
         return ResponseEntity.ok(bookService.updateBook(id, bookDTO));
+    }
+
+    @DeleteMapping("/books/{id}")
+    public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
+        boolean successful = bookService.deleteBook(id);
+        if (successful) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

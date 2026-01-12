@@ -33,6 +33,25 @@ public class BookService {
         return bookRepository.save(bookEntity);
     }
 
+    public BookEntity updateBook(Long id, BookDTO bookDTO) {
+        BookEntity bookEntity = bookRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Buch nicht gefunden mit ID: " + id));
+
+        bookEntity.setTitle(bookDTO.title());
+        bookEntity.setAuthor(bookDTO.author());
+        bookEntity.setReleaseYear(bookDTO.releaseYear());
+
+        return bookRepository.save(bookEntity);
+    }
+
+    public boolean deleteBook(Long id) {
+        if (bookRepository.existsById(id)) {
+            bookRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
     private BookDTO transformEntity(BookEntity bookEntity) {
         return new BookDTO(
                 bookEntity.getId().intValue(),
@@ -40,15 +59,5 @@ public class BookService {
                 bookEntity.getAuthor(),
                 bookEntity.getReleaseYear()
         );
-    }
-    public BookEntity updateBook(Long id, BookDTO bookDTO) {
-        BookEntity bookEntity = bookRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Buch nicht gefunden"));
-
-        bookEntity.setTitle(bookDTO.title());
-        bookEntity.setAuthor(bookDTO.author());
-        bookEntity.setReleaseYear(bookDTO.releaseYear());
-
-        return bookRepository.save(bookEntity);
     }
 }
