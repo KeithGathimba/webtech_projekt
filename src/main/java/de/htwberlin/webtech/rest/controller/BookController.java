@@ -3,6 +3,7 @@ package de.htwberlin.webtech.rest.controller;
 import de.htwberlin.webtech.persistence.BookEntity;
 import de.htwberlin.webtech.rest.model.BookDTO;
 import de.htwberlin.webtech.service.BookService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,13 +26,13 @@ public class BookController {
     }
 
     @PostMapping("/books")
-    public ResponseEntity<BookEntity> createBook(@RequestBody BookDTO bookDTO) {
+    public ResponseEntity<BookEntity> createBook(@Valid @RequestBody BookDTO bookDTO) {
         BookEntity createdBook = bookService.createBook(bookDTO);
         return ResponseEntity.ok(createdBook);
     }
 
     @PutMapping("/books/{id}")
-    public ResponseEntity<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookDTO bookDTO) {
+    public ResponseEntity<BookEntity> updateBook(@PathVariable Long id, @Valid @RequestBody BookDTO bookDTO) {
         return ResponseEntity.ok(bookService.updateBook(id, bookDTO));
     }
 
