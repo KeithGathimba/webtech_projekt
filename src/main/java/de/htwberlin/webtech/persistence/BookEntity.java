@@ -26,14 +26,22 @@ public class BookEntity {
     @Column(name = "rating")
     private Integer rating;
 
+    @Column(name = "isbn")
+    private String isbn;      // NEU
+
+    @Column(name = "cover_url")
+    private String coverUrl;  // NEU
+
     public BookEntity() {}
 
-    public BookEntity(String title, String author, int releaseYear, String status, Integer rating) {
+    public BookEntity(String title, String author, int releaseYear, String status, Integer rating, String isbn, String coverUrl) {
         this.title = title;
         this.author = author;
         this.releaseYear = releaseYear;
         this.status = status;
         this.rating = rating;
+        this.isbn = isbn;
+        this.coverUrl = coverUrl;
     }
 
     public Long getId() { return id; }
@@ -51,11 +59,13 @@ public class BookEntity {
     public void setStatus(String status) { this.status = status; }
 
     public int getRating() {
-        if (this.rating == null) {
-            return 0;
-        }
-        return this.rating;
+        return (this.rating == null) ? 0 : this.rating;
     }
-
     public void setRating(Integer rating) { this.rating = rating; }
+
+    public String getIsbn() { return isbn; }
+    public void setIsbn(String isbn) { this.isbn = isbn; }
+
+    public String getCoverUrl() { return coverUrl; }
+    public void setCoverUrl(String coverUrl) { this.coverUrl = coverUrl; }
 }

@@ -29,7 +29,9 @@ public class BookService {
                 bookDTO.author(),
                 bookDTO.releaseYear(),
                 bookDTO.status(),
-                bookDTO.rating()
+                bookDTO.rating(),
+                bookDTO.isbn(),
+                bookDTO.coverUrl()
         );
         return bookRepository.save(bookEntity);
     }
@@ -43,6 +45,8 @@ public class BookService {
         bookEntity.setReleaseYear(bookDTO.releaseYear());
         bookEntity.setStatus(bookDTO.status());
         bookEntity.setRating(bookDTO.rating());
+        bookEntity.setIsbn(bookDTO.isbn());
+        bookEntity.setCoverUrl(bookDTO.coverUrl());
 
         return bookRepository.save(bookEntity);
     }
@@ -62,7 +66,9 @@ public class BookService {
                 bookEntity.getAuthor(),
                 bookEntity.getReleaseYear(),
                 bookEntity.getStatus(),
-                bookEntity.getRating()
+                bookEntity.getRating(),
+                bookEntity.getIsbn(),
+                bookEntity.getCoverUrl()
         );
     }
 }
